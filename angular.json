@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "oppi-clone"
+  "defaultProject": "oppi-clone",
+  "cli": {
+    "analytics": "cb512ddc-0602-41d6-8342-283f101a9bbe"
+  }
 }

@@ -1,0 +1,41 @@
+<div>
+  <img src="../../assets/images/ic_logo_header.png" class="login-logo" alt="logo"/>
+</div>
+
+<div class="login-container">
+  <div class="login-left-half">
+    <img src="../../assets/images/img_login_group.png" alt="logo_group" class="login-img"/>
+  </div>
+
+  <div class="login-right-half">
+    <p class="login-title">
+      Sign In
+    </p>
+    
+    <div class="login-input-container">
+      <label for="email" class="login-label">EMAIL</label>
+      <input
+        id="email"
+        [(ngModel)]="email"
+        class="login-input" 
+        placeholder="Email"
+      />
+    </div>
+    <div class="login-input-container">
+      <label for="password" class="login-label">PASSWORD</label>
+      <input
+        id="password"
+        [(ngModel)]="password"
+        type="password"
+        class="login-input" 
+        placeholder="Password"
+      />
+    </div>
+    <button mat-raised-button color="primary" class="login-btn" (click)="click()">Sign in</button>
+    <div class="login-forgot-password">
+      <p>
+        Forgot Password
+      </p>
+    </div>
+  </div>
+</div>
