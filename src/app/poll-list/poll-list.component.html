@@ -1,1 +1,26 @@
-<p>poll-list works!</p>
+<app-header></app-header>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+               (closed)="events.push('close!')" fullscreen>
+    <div class="sidenav-row">
+      <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
+      <p>Poll Management</p>
+    </div>
+    <div class="sidenav-row">
+      <mat-icon aria-hidden="false" aria-label="add icon">add</mat-icon>
+      <p>Create Poll</p>
+    </div>
+    <div class="sidenav-row">
+      <mat-icon aria-hidden="false" aria-label="people icon">supervisor_account</mat-icon>
+      <p>User Management</p>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- <p><mat-checkbox [(ngModel)]="opened"></mat-checkbox></p> -->
+    <p><button mat-button (click)="sidenav.toggle()">click here toggle sidebar</button></p>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<!-- <p>poll-list works!</p> -->

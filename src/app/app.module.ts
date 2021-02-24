@@ -9,6 +9,10 @@ import { PollListComponent } from './poll-list/poll-list.component';
 import { HelpComponent } from './help/help.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -16,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     LoginComponent,
     HelpComponent,
-    PollListComponent
+    PollListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +30,9 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule,
+    MatSidenavModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

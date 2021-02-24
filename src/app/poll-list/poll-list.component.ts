@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./poll-list.component.scss']
 })
 export class PollListComponent implements OnInit {
+  events: string[] = [];
+  opened: boolean;
 
-  constructor() { }
+  constructor() { 
+    this.opened = true;
+  }
 
   ngOnInit(): void {
   }

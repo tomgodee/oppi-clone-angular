@@ -1,0 +1,33 @@
+.header-container {
+  padding: 0px;
+  z-index: 200;
+  // position: fixed;
+  border-bottom: 1px solid #c8ced3;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 7%;
+}
+
+.header-hamburger-icon {
+  padding: 5px 15px;
+}
+
+.header-logo {
+  margin-left: 20px;
+}
+
+.header-btn-container { 
+  margin-left: auto;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  color: rgb(66, 179, 230);
+  
+  .mat-button {
+    color: rgb(66, 179, 230);
+    font-size: 16px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+  }
+}
