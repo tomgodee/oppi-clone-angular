@@ -1,22 +1,20 @@
-<app-header></app-header>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-               (closed)="events.push('close!')" fullscreen>
-    <div class="sidenav-row">
+<app-header (toggleSidebarEvent)="toggleSidebar($event)" [sidebarOpened]="sidebarOpened"></app-header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [(opened)]="sidebarOpened" fullscreen>
+    <div [ngClass]="sidebarRowHighlighted[0] ? 'sidenav-row sidenav-row-highlighted' : 'sidenav-row'" (click)="clickRow(1)">
       <mat-icon aria-hidden="false" aria-label="home icon">home</mat-icon>
       <p>Poll Management</p>
     </div>
-    <div class="sidenav-row">
+    <div [ngClass]="sidebarRowHighlighted[1] ? 'sidenav-row sidenav-row-highlighted' : 'sidenav-row'" (click)="clickRow(2)">
       <mat-icon aria-hidden="false" aria-label="add icon">add</mat-icon>
       <p>Create Poll</p>
     </div>
-    <div class="sidenav-row">
+    <div [ngClass]="sidebarRowHighlighted[2] ? 'sidenav-row sidenav-row-highlighted' : 'sidenav-row'" (click)="clickRow(3)">
       <mat-icon aria-hidden="false" aria-label="people icon">supervisor_account</mat-icon>
       <p>User Management</p>
     </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <p><button mat-button (click)="sidenav.toggle()">click here toggle sidebar</button></p>
   </mat-sidenav-content>
 </mat-sidenav-container>

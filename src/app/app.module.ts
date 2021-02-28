@@ -21,7 +21,7 @@ import { HeaderComponent } from './header/header.component';
     LoginComponent,
     HelpComponent,
     PollListComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

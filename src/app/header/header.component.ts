@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
 import { ADMIN_ACCESS_TOKEN } from '../../constants/localStorage';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -8,7 +8,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  showLogoutBtn: boolean
+  @Output() toggleSidebarEvent = new EventEmitter<boolean>();
+  @Input() sidebarOpened!: boolean;
+  showLogoutBtn: boolean;
 
   constructor(
     private router: Router,
@@ -17,6 +19,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  toggleSidebarEventEmitter = () => {
+    this.toggleSidebarEvent.emit(!this.sidebarOpened);
   }
 
   toggle = () => {

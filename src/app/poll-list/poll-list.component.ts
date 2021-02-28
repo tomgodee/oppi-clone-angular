@@ -7,13 +7,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PollListComponent implements OnInit {
   events: string[] = [];
-  opened: boolean;
+  sidebarOpened: boolean;
+  sidebarRowHighlighted: boolean[];
 
   constructor() { 
-    this.opened = true;
+    this.sidebarOpened = true;
+    this.sidebarRowHighlighted = [true, false, false];
   }
 
   ngOnInit(): void {
+  }
+
+  toggleSidebar = (sidebarOpened: boolean) => {
+    console.log('sidebarOpened', sidebarOpened);
+    this.sidebarOpened = sidebarOpened;
+  }
+
+  clickRow = (rowNum: number) => {
+    this.sidebarRowHighlighted = this.sidebarRowHighlighted.map((row, index) => {
+      if (index === rowNum - 1) row = true;
+      else row = false;
+      return row;
+    });
   }
 
 }
