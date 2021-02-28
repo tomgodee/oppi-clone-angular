@@ -1,6 +1,17 @@
 .sidenav-row {
   display: flex;
   align-items: center;
+  background-image: linear-gradient(to right, rgba(74, 144, 226, 0.3), rgba(237, 245, 252, 0.3));
+  color: rgb(66, 179, 230);
+  font-family: 'Montserrat';
+
+  .mat-icon {
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 15px;
+  }
 }
 
 .mat-sidenav-container {

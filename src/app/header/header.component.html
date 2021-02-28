@@ -13,7 +13,10 @@
   </div>
   
   <div class="header-btn-container">
-    <button mat-button color="primary" class="header-btn">Oppi Admin</button>
-    <mat-icon aria-hidden="false" aria-label="arrow down icon">expand_more</mat-icon>
+    <div (click)="toggle()" class="header-login-btn-container">
+      <button mat-button color="primary" class="header-btn">Oppi Admin</button>
+      <mat-icon aria-hidden="false" aria-label="arrow down icon">expand_more</mat-icon>
+    </div>
+    <button *ngIf="showLogoutBtn" class="header-logout-btn" (click)="logout()" mat-button>Logout</button>
   </div>
 </div>

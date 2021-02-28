@@ -17,12 +17,22 @@
   margin-left: 20px;
 }
 
+
 .header-btn-container { 
   margin-left: auto;
   margin-right: 10px;
   display: flex;
   align-items: center;
   color: rgb(66, 179, 230);
+}
+
+.header-login-btn-container { 
+  margin-left: auto;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  color: rgb(66, 179, 230);
+  cursor: pointer;
   
   .mat-button {
     color: rgb(66, 179, 230);
@@ -30,4 +40,16 @@
     font-family: 'Montserrat';
     font-weight: 700;
   }
+}
+
+.header-logout-btn {
+  position: absolute;
+  top: 52px;
+  right: 45px;
+  color: gray;
+  z-index: 2;
+  background-color: white;
+  border: 1px solid gray;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  font-family: 'Montserrat';
 }

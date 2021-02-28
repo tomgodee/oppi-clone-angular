@@ -16,6 +16,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-// admin@example.com
-// testtest
