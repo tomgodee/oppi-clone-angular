@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
 import { HeaderComponent } from './header/header.component';
 
 
@@ -33,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
     MatIconModule,
     MatCheckboxModule,
     MatSidenavModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,25 +2,22 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ADMIN_ACCESS_TOKEN } from '../constants/localStorage';
-import { SigninInterface, UserInterface } from '../types/types';
+import { PollListInterface } from '../types/types';
+
+interface Query {
+  search: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class PollService {
   private BASE_URL = 'https://dev.oppi.live';
 
   constructor(
     private http: HttpClient) { }
 
-  signin(email: string, password: string): Observable<SigninInterface> {
-    return this.http.post<SigninInterface>(`${this.BASE_URL}/api/admin/v1/auth/signin`, {
-      email,
-      password,
-    });
-  }
-
-  getCurrentUserInfo():  Observable<UserInterface> {
+  getPollList(query?: Query):  Observable<PollListInterface> {
     const adminAccessToken = localStorage.getItem(ADMIN_ACCESS_TOKEN);
     const httpOptions = {
       headers: new HttpHeaders({
@@ -28,6 +25,9 @@ export class AuthenticationService {
         Authorization: `Bearer ${adminAccessToken}`
       }),
     };
-    return this.http.get<UserInterface>(`${this.BASE_URL}/api/admin/v1/me`, httpOptions);
+    return this.http.get<PollListInterface>(
+      `${this.BASE_URL}/api/admin/v1/polls?offset=0&limit=10&direction=desc&search=${query?.search || ''}`,
+      httpOptions
+    );
   }
 }
