@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { PollService } from '../poll.service';
-import { UserInterface, PollListInterface } from '../../types/types';
+import { UserInterface, PollListInterface, PollRow } from '../../types/types';
 import { debounce } from 'lodash';
 
 interface Query {
@@ -22,6 +23,8 @@ export class PollListComponent implements OnInit {
   query: Query;
 
   constructor(
+    private route: ActivatedRoute,
+    private router: Router,
     private authenticationService: AuthenticationService,
     private pollService: PollService,
   ) { 
@@ -64,5 +67,9 @@ export class PollListComponent implements OnInit {
     this.pollService.getPollList(this.query).subscribe(response => {
       this.pollList = response;
     });
+  }
+
+  handleClickPoll = (row: PollRow) => {
+    this.router.navigate([`poll-detail/${row.id}`]);
   }
 }

@@ -1,0 +1,173 @@
+* {
+  font-family: 'Montserrat';
+}
+.mat-icon {
+  font-family: "Material Icons";
+}
+
+.sidenav-row {
+  display: flex;
+  align-items: center;
+  color: rgb(116, 116, 116);
+  font-weight: 700;
+  cursor: pointer;
+
+  .mat-icon {
+    margin-left: 10px;
+  }
+
+  p {
+    margin-left: 15px;
+  }
+}
+
+.sidenav-row-highlighted {
+  background-image: linear-gradient(to right, rgba(74, 144, 226, 0.3), rgba(237, 245, 252, 0.3));
+  color: rgb(66, 179, 230);
+}
+
+.mat-sidenav-container {
+  height: 93%;
+
+}
+.mat-sidenav {
+  width: 230px;
+}
+
+.mat-drawer-content {
+  padding: 0 30px;
+  background-color: #f5f6f9;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.poll-title-container {
+  display: flex;
+  align-items: center;
+}
+
+.poll-title {
+  font-size: 30px;
+  color: black;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+
+.poll-status {
+  padding-left: 25px;
+  padding-right: 25px;
+  margin-bottom: 0px;
+  border-radius: 50px;
+  font-size: 12px;
+  line-height: 25px;
+  background-color: rgb(193, 192, 192);
+  color: rgb(0, 0, 0);
+}
+
+.poll-date {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #363636;
+  margin-left: 10px;
+}
+
+.poll-card-container {
+  display: flex;
+  height: 140px;
+
+  .mat-card {
+    width: 16.66%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90px;
+    padding-bottom: 0;
+    margin-top: 10px;
+    margin-right: 10px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 12px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  .mat-card-title {
+    margin-bottom: 3px;
+    color: #4f4f4f;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+  .mat-card-content {
+    margin-bottom: 5px;
+    color: #42B3E6;
+    font-size: 25px;
+  }
+}
+
+.opinions-container {
+  display: flex;
+}
+
+.opinions-chart-container {
+  width: 45%;
+
+  .mat-card-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    position: relative;
+  }
+  .mat-icon {
+    position: absolute;
+    left: 130px;
+  }
+}
+
+.opinions-detail-container {
+  width: 55%;
+}
+
+.groups-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .mat-fab {
+    margin: 5px;
+  }
+}
+
+.opinion-group {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+.opinion-group-percentage {
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-bottom: 0;
+}
+.opinion-group-text {
+  color: black;
+  font-size: 13px;
+  font-weight: 300;
+  margin-left: 15px;
+  padding-right: 10px;
+}
+
+.mcp-content-container {
+  display: flex;
+  flex-direction: column;
+}

@@ -19,10 +19,10 @@ interface PollListInterface {
   limit: number;
   offset: number;
   count: number;
-  list: Poll[];
+  list: PollRow[];
 }
 
-interface Poll {
+interface PollRow {
   closedAt: number;
   description: string;
   displayId: number;
@@ -63,8 +63,87 @@ interface HeroImage {
   url: string
 }
 
+interface Group {
+  id: number;
+  name: string;
+  populationPercentage: number;
+  topUniqueStatement: [];
+}
+
+interface PollResultInterface {
+  groups: {
+    list: Group[];
+  };
+  mcqGroupAnswer: {
+    data: {
+      content: string;
+      heroImage: HeroImage;
+      id: number;
+      isMultipleSelection: boolean;
+      options: {
+        answer: any;
+        content: string;
+        heroImage: HeroImage;
+        id: number;
+        order: number;
+      }[];  
+    }[];
+  };
+  poll: PollRow;
+  statementGroupVote: {
+    data: any;
+  };
+  statementMcqVote: {
+    data: any;
+  };
+  statementScore: {
+    list: {
+      agreeCount: string;
+      agreePercentage: string;
+      categories: string[];
+      category: string;
+      certaintyScore: string;
+      commonGroundScore: string;
+      consensusFactor: string;
+      disagreeCount: string;
+      disagreePercentage: string;
+      dividedScore: string;
+      participantFactor: string;
+      statementId: string;
+      unsureCount: string;
+      unsurePercentage: string;
+      voteCount: string;
+    }[];
+  };
+  statements: {
+    limit: number;
+    offset: number;
+    totalCount:number;
+    list: {
+      content: string;
+      displayId: number;
+      heroImage: HeroImage;
+      id: number;
+      order: number;
+      status: string;
+      type: string;
+    }[]
+  };
+  summary: {
+    activeParticipantCount: number;
+    commentCount: number;
+    defaultStatementCount: number;
+    participantCount: number;
+    userStatementCount: number;
+    voteCount: number;
+  };
+}
+
 export {
   SigninInterface,
   UserInterface,
   PollListInterface,
+  PollRow,
+  PollResultInterface,
+  Group,
 }
