@@ -17,6 +17,8 @@ export class PollComponent implements OnInit {
   selectedMcqGroup: string;
   selectedMcqQuestion: string;
 
+  selectedPollLanguage: string;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -37,6 +39,8 @@ export class PollComponent implements OnInit {
     this.selectedGroup = {} as Group;
     this.selectedMcqGroup = '';
     this.selectedMcqQuestion = '';
+
+    this.selectedPollLanguage = '';
   }
 
   ngOnInit(): void {
@@ -44,6 +48,8 @@ export class PollComponent implements OnInit {
     this.pollService.getPollResult(pollId).subscribe(response => {
       this.pollResult = response;
       this.selectedGroup = this.pollResult.groups.list[0];
+      this.selectedPollLanguage = this.pollResult.poll.language;
+      console.log('this.selectedPollLanguage', this.selectedPollLanguage);
     })
   }
 
@@ -63,4 +69,16 @@ export class PollComponent implements OnInit {
     this.selectedGroup = group;
   }
 
+  savePollDetail = () => {
+    const data = {
+      description: this.pollResult.poll.description,
+      language: this.selectedPollLanguage,
+      name: this.pollResult.poll.title,
+      question: this.pollResult.poll.question,
+      video_urls: [],
+    };
+    this.pollService.updatePollDetail(this.pollResult.poll.id, data).subscribe(response => {
+      console.log('response', response);
+    });
+  }
 }

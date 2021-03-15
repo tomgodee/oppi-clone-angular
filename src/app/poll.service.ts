@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ADMIN_ACCESS_TOKEN } from '../constants/localStorage';
-import { PollListInterface, PollResultInterface } from '../types/types';
+import { PollListInterface, PollResultInterface, PollRow } from '../types/types';
 
 interface Query {
   search: string;
@@ -42,6 +42,29 @@ export class PollService {
     return this.http.get<PollResultInterface>(
       `${this.BASE_URL}/api/admin/v1/polls/${id}/result`,
       httpOptions
+    );
+  }
+
+  updatePollDetail(id: number, data: any): Observable<PollRow> {
+    const adminAccessToken = localStorage.getItem(ADMIN_ACCESS_TOKEN);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization: `Bearer ${adminAccessToken}`
+      }),
+    };
+    return this.http.put<PollRow>(
+      `${this.BASE_URL}/api/admin/v1/polls/${id}`,
+      Object.assign(
+        data, {
+          _method: "put",
+          hero_image_id: 0,
+          is_public_result: true,
+          is_require_email: true,
+          type: "public"
+        }
+      ),
+      httpOptions,
     );
   }
 }

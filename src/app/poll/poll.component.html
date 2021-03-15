@@ -92,7 +92,6 @@
           </mat-card>
         </div>
 
-
         <div [ngStyle]="{'margin-top': '30px'}">
           <mat-card [ngClass]="'mcq-container'"> 
             <div [ngClass]="'mcq-title-container'">
@@ -103,7 +102,7 @@
                 <mat-form-field appearance="fill">
                   <mat-label>View by</mat-label>
                   <mat-select [(value)]="selectedMcqGroup">
-                    <mat-option [value]="All">All</mat-option>
+                    <mat-option [value]="'All'">All</mat-option>
                     <mat-option *ngFor="let group of pollResult.groups.list.slice(0, pollResult.groups.list.length - 2);" [value]="group.name">
                       Group {{group.name}}
                     </mat-option>
@@ -113,7 +112,7 @@
                 <mat-form-field appearance="fill">
                   <mat-label>Question</mat-label>
                   <mat-select [(value)]="selectedMcqQuestion">
-                    <mat-option *ngFor="let question of pollResult.mcqGroupAnswer.data" [value]="question.content">
+                    <mat-option *ngFor="let question of pollResult.mcqGroupAnswer?.data" [value]="question.content">
                       {{question.content}}
                     </mat-option>
                   </mat-select>
@@ -125,9 +124,78 @@
           </mat-card>
         </div>
 
-
       </mat-tab>
-      <mat-tab label="Poll Detail"> Poll Detail </mat-tab>
+
+
+      <mat-tab label="Poll Detail"> 
+        <ng-template mat-tab-label>
+          Poll Detail 
+        </ng-template>
+
+        <div [ngClass]="'pd-language'">
+          <p>Poll Language *</p>
+          <mat-form-field appearance="fill">
+            <mat-select [(value)]="selectedPollLanguage">
+              <mat-option value="en">English</mat-option>
+              <mat-option value="vi">Vietnamese</mat-option>
+              <mat-option value="id">Indonesian</mat-option>
+              <mat-option value="zh">Chinese (Mandarin)</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div [ngClass]="''">
+          <p>Poll Name *</p>
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="This name will be displayed as the title of the poll when the url link of the poll is shared over social media. This name helps your internal team to distinguish this poll from other polls."
+              maxlength="80"
+              [(ngModel)]="pollResult.poll.title"
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+
+        <div [ngClass]="''">
+          <p>Poll Question *</p>
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="The poll question will be central headline question and title on the oppi.live page.  It should be interesting enough to attract your participants’ attention and formulated in a way that invites insightful conversations about a particular issue."
+              maxlength="255"
+              [(ngModel)]="pollResult.poll.question"
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+        
+        <div [ngClass]="''">
+          <p>Description *</p>
+          <mat-form-field>
+            <textarea
+              matInput
+              placeholder="Provide context to your poll by answering the 5 Ws. Who you are? Why you are asking them to take this poll? What their contribution means? Where will this data go towards? When can they expect to see the results?
+              Remember to credit your photos and videos appropriately here."
+              maxlength="999"
+              [(ngModel)]="pollResult.poll.description"
+            >
+            </textarea>
+          </mat-form-field>
+        </div>
+
+        <div [ngClass]="''">
+          <p>Poll Media *</p>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Please paste Youtube url here" [(ngModel)]="pollResult.poll.videoUrls && pollResult.poll.videoUrls[0]">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button (click)="savePollDetail()" mat-raised-button color="accent">Save</button>
+        </div>
+      </mat-tab>
+
       <mat-tab label="Multiple Choice Questions"> Multiple Choice Questions </mat-tab>
       <mat-tab label="Opinions Management"> Opinions Managemaaent </mat-tab>
     </mat-tab-group>

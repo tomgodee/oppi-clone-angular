@@ -30,10 +30,12 @@ interface PollRow {
   id: number;
   isPublicResult: boolean;
   isRequireEmail: boolean;
+  language: string;
   multipleChoiceQuestions: Question[];
   openedAt: number;
   participantCount: number;
   passcode: string;
+  question: string;
   slug: string;
   statementCount: number;
   status: string;
@@ -41,6 +43,7 @@ interface PollRow {
   type: string;
   url: string;
   userId: number;
+  videoUrls: string[];
 }
 
 interface Question {

@@ -16,6 +16,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { HeaderComponent } from './header/header.component';
 import { PollComponent } from './poll/poll.component';
@@ -40,8 +42,9 @@ import { PollComponent } from './poll/poll.component';
     MatIconModule,
     MatCheckboxModule,
     MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatTableModule,
-    MatTabsModule,
     MatTabsModule,
     MatCardModule,
     MatTooltipModule,
