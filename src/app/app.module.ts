@@ -22,6 +22,11 @@ import { MatTableModule } from '@angular/material/table';
 import { HeaderComponent } from './header/header.component';
 import { PollComponent } from './poll/poll.component';
 
+import { booksReducer } from './state/books/books.reducer';
+import { collectionReducer } from './state/collection/collection.reducer';
+import { StoreModule } from '@ngrx/store';
+import { BookListComponent } from './book-list/book-list.component';
+import { BookCollectionComponent } from './book-collection/book-collection.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +36,12 @@ import { PollComponent } from './poll/poll.component';
     PollListComponent,
     HeaderComponent,
     PollComponent,
+    BookListComponent,
+    BookCollectionComponent,
   ],
   imports: [
     BrowserModule,
+    StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }),
     HttpClientModule,
     FormsModule,
     AppRoutingModule,

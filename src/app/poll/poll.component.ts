@@ -4,6 +4,16 @@ import { AuthenticationService } from '../authentication.service';
 import { PollService } from '../poll.service';
 import { UserInterface, Group, PollResultInterface, } from '../../types/types';
 
+import { Store, select } from '@ngrx/store';
+ 
+import { selectBookCollection, selectBooks } from '../state/books/books.selectors';
+import {
+  retrievedBookList,
+  addBook,
+  removeBook,
+} from '../state/books/books.actions';
+import { GoogleBooksService } from '../book-list/books.service';
+ 
 @Component({
   selector: 'app-poll',
   templateUrl: './poll.component.html',
@@ -19,11 +29,25 @@ export class PollComponent implements OnInit {
 
   selectedPollLanguage: string;
 
+  books$ = this.store.pipe(select(selectBooks));
+  bookCollection$ = this.store.pipe(select(selectBookCollection));
+ 
+  onAdd(bookId: string) {
+    this.store.dispatch(addBook({ bookId }));
+  }
+ 
+  onRemove(bookId: string) {
+    this.store.dispatch(removeBook({ bookId }));
+  }
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
     private pollService: PollService,
+
+    private booksService: GoogleBooksService,
+    private store: Store,
   ) { 
     this.sidebarOpened = false;
     this.sidebarRowHighlighted = [true, false, false];
@@ -50,7 +74,11 @@ export class PollComponent implements OnInit {
       this.selectedGroup = this.pollResult.groups.list[0];
       this.selectedPollLanguage = this.pollResult.poll.language;
       console.log('this.selectedPollLanguage', this.selectedPollLanguage);
-    })
+    });
+
+    this.booksService
+    .getBooks()
+    .subscribe((Book) => this.store.dispatch(retrievedBookList({ Book })));
   }
 
   toggleSidebar = (sidebarOpened: boolean) => {
