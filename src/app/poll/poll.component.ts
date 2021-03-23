@@ -7,12 +7,14 @@ import { UserInterface, Group, PollResultInterface, } from '../../types/types';
 import { Store, select } from '@ngrx/store';
  
 import { selectBookCollection, selectBooks } from '../state/books/books.selectors';
+import { selectUser } from '../state/user/user.selectors';
 import {
   retrievedBookList,
   addBook,
   removeBook,
 } from '../state/books/books.actions';
 import { GoogleBooksService } from '../book-list/books.service';
+// import { saveUser } from '../state/user/user.actions';
  
 @Component({
   selector: 'app-poll',
@@ -31,6 +33,7 @@ export class PollComponent implements OnInit {
 
   books$ = this.store.pipe(select(selectBooks));
   bookCollection$ = this.store.pipe(select(selectBookCollection));
+  // user$ = this.store.pipe(select(selectUser));
  
   onAdd(bookId: string) {
     this.store.dispatch(addBook({ bookId }));
@@ -73,12 +76,13 @@ export class PollComponent implements OnInit {
       this.pollResult = response;
       this.selectedGroup = this.pollResult.groups.list[0];
       this.selectedPollLanguage = this.pollResult.poll.language;
-      console.log('this.selectedPollLanguage', this.selectedPollLanguage);
     });
 
     this.booksService
     .getBooks()
-    .subscribe((Book) => this.store.dispatch(retrievedBookList({ Book })));
+    .subscribe((books) => {
+      this.store.dispatch(retrievedBookList({ books }))
+    });
   }
 
   toggleSidebar = (sidebarOpened: boolean) => {

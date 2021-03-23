@@ -3,5 +3,10 @@ import { UserInterface } from '../../../types/types';
 
 export const getUser = createAction(
   '[User] Get User',
-  props<{ user: UserInterface }>()
+  props<UserInterface>()
 );
+
+export const saveUser = createAction(
+  '[User] Save User',
+  props<UserInterface>()
+)

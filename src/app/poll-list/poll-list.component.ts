@@ -3,7 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { PollService } from '../poll.service';
 import { UserInterface, PollListInterface, PollRow } from '../../types/types';
-import { debounce } from 'lodash';
+import { debounce, repeat } from 'lodash';
+
+import { Store, select } from '@ngrx/store';
+import { saveUser } from '../state/user/user.actions';
+
+import { Observable } from 'rxjs';
 
 interface Query {
   search: string;
@@ -27,6 +32,7 @@ export class PollListComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private pollService: PollService,
+    private store: Store,
   ) { 
     this.sidebarOpened = false;
     this.sidebarRowHighlighted = [true, false, false];
@@ -41,11 +47,12 @@ export class PollListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authenticationService.getCurrentUserInfo().subscribe(response => {
+    this.authenticationService.getCurrentUserInfo().subscribe((response) => {
       this.user = response;
+      this.store.dispatch(saveUser(response));
     });
 
-    this.pollService.getPollList().subscribe(response => {
+    this.pollService.getPollList().subscribe((response) => {
       this.pollList = response;
     });
   }

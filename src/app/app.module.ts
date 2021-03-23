@@ -24,6 +24,7 @@ import { PollComponent } from './poll/poll.component';
 
 import { booksReducer } from './state/books/books.reducer';
 import { collectionReducer } from './state/collection/collection.reducer';
+import { userReducer } from './state/user/user.reducer';
 import { StoreModule } from '@ngrx/store';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookCollectionComponent } from './book-collection/book-collection.component';
@@ -41,7 +42,7 @@ import { BookCollectionComponent } from './book-collection/book-collection.compo
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }),
+    StoreModule.forRoot({ books: booksReducer, collection: collectionReducer, user: userReducer }),
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
